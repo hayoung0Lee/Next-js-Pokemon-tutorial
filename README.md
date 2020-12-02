@@ -12,3 +12,11 @@ https://www.youtube.com/watch?v=2tJedF8I-8Q&amp;feature=share&amp;ab_channel=Jac
 - CSR 단점
   - Blank page
   - Big bundles
+
+- SSR 사용시 장점
+  - immediate
+  - No additional client fetchs
+  - Ideal for SEO
+- SSR 사용시 단점
+  - slow on server
+  - UI compatability

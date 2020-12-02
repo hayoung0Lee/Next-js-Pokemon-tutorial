@@ -5,13 +5,22 @@ import Head from 'next/head'
 import { Container, FormControl, Row, Col, Card } from 'react-bootstrap'
 
 const getPokemon = async (key, q) => {
-  const { data } = await axios.get(`/api/pokemon?name=${escape(q)}`);
+  const { data } = await axios.get(`http://localhost:3000/api/pokemon?name=${escape(q)}`);
   return data;
 }
 
-export default function Name () {
+export async function getServerSideProps(context) {
+    const data = await getPokemon(null, context.params.name);
+    return {
+        props: {
+            data: data
+        }
+    }
+}
+
+export default function Name ({data}) {
     const router = useRouter();
-    const { data } = useQuery(["name", router.query.name], getPokemon);
+    // const { data } = useQuery(["name", router.query.name], getPokemon);
     return (
     <div>
         <Head>
